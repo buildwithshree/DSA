@@ -1,0 +1,21 @@
+package string;
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+
+        if (s.length() != t.length()) return false; // can't be anagram
+
+        int[] count = new int[26]; // for 26 lowercase letters
+
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++; // increment for s
+            count[t.charAt(i) - 'a']--; // decrement for t
+        }
+
+        for (int c : count) {
+            if (c != 0) return false; // mismatch found
+        }
+
+        return true;
+    }
+}
